@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/map"
+        tools:context=".MapsActivityWifi"
+        android:name="com.google.android.gms.maps.SupportMapFragment"/>
+
+    <Button
+        android:id="@+id/btn_draw_State"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="right|top"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="11dp"
+        android:onClick="changeActivity"
+        android:text="establecimientos" />
+
+
+    <Button
+        android:id="@+id/terminal1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="left|top"
+        android:layout_marginTop="55dp"
+        android:layout_marginEnd="11dp"
+        android:onClick="changeTerminal"
+        android:text="Terminal 1" />
+</FrameLayout>
