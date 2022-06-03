@@ -27,7 +27,7 @@ public class storesList extends AppCompatActivity {
 
 
     private void setViews(){
-
+        ArrayList<stores> data = getStores();
         spinner = findViewById(R.id.spinner);
         spinner.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, categories));
 
@@ -51,6 +51,13 @@ public class storesList extends AppCompatActivity {
 
             }
         });
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(storesList.this, "El local " + data.get(i).nombre + " se encuentra en " + data.get(i).localizacion, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
 
@@ -61,8 +68,8 @@ public class storesList extends AppCompatActivity {
         data.clear();
         if (cursor.moveToFirst()) {
             do {
-                data.add(new stores(cursor.getString(1), cursor.getInt(2)));
-                System.out.println("Nombre tienda: " + cursor.getString(1) + ", categoria tienda: " + cursor.getInt(2));
+                data.add(new stores(cursor.getString(1), cursor.getInt(2), cursor.getString(3)));
+               // System.out.println(cursor.getColumnName(3));
             } while (cursor.moveToNext());
 
         }
@@ -94,10 +101,15 @@ public class storesList extends AppCompatActivity {
 
         private String nombre;
         private int categoria;
+        private String localizacion;
 
 
         public String getNombre(){
             return nombre.toString();
+        }
+
+        public String getLocalizacion(){
+            return localizacion.toString();
         }
 
         public int getCategoria(){
@@ -105,9 +117,10 @@ public class storesList extends AppCompatActivity {
         }
 
 
-        public stores(String nombre, int categoria){
+        public stores(String nombre, int categoria, String localizacion){
             this.nombre = nombre;
             this.categoria = categoria;
+            this.localizacion = localizacion;
         }
 
         @Override
