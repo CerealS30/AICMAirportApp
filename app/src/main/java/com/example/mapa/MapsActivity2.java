@@ -40,6 +40,8 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
     public void changeTerminal(View v){
         Intent intent = new Intent(this, MapsActivity.class);
         startActivity(intent);
+        mMap.setIndoorEnabled(false);
+        mMap.getUiSettings().setIndoorLevelPickerEnabled(false);
     }
     /**
      * Manipulates the map once available.
@@ -59,6 +61,8 @@ public class MapsActivity2 extends FragmentActivity implements OnMapReadyCallbac
         //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in AICM"));
         //mMap.setLatLngBoundsForCameraTarget(AICM);
         mMap.getUiSettings().setZoomControlsEnabled(true);
+        mMap.setIndoorEnabled(true);
+        mMap.getUiSettings().setIndoorLevelPickerEnabled(true);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(aicm, 16.0f));
     }
 }

@@ -45,6 +45,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void changeTerminal(View v){
         Intent intent = new Intent(this, MapsActivity2.class);
         startActivity(intent);
+        mMap.setIndoorEnabled(false);
+        mMap.getUiSettings().setIndoorLevelPickerEnabled(false);
     }
 
     /**
@@ -67,7 +69,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in AICM"));
         //mMap.setLatLngBoundsForCameraTarget(AICM);
         mMap.getUiSettings().setZoomControlsEnabled(true);
+        mMap.setIndoorEnabled(true);
+        mMap.getUiSettings().setIndoorLevelPickerEnabled(true);
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(aicm, 16.0f));
-
     }
 }
